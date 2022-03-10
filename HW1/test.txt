@@ -4,7 +4,7 @@ def compute_hcf ( x: int, y: float, z: list, j: int ) :
     else:
         smaller = x
     for i in range(1, smaller+1):
-        if((x % i == 0) and (y % i == 0)):
+        if(( x % i == 0 ) and (y % i == 0 )):
             hcf = i 
     return hcf
 
@@ -13,7 +13,7 @@ def compute_hcf ( x: int, y: float, z: list, j: int ) :
 
 while(y):
     x, y = y, x % y
-
+print( "fafaf" )
 var1 = 300
 var2 = 200
 var3 = "xxx"

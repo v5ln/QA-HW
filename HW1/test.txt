@@ -1,7 +1,4 @@
-
-def compute_hcf(x, y, , , ):
-
-
+def compute_hcf ( x: int, y: float, z: list, j: int ) :
     if x > y:
         smaller = y
     else:
@@ -13,11 +10,14 @@ def compute_hcf(x, y, , , ):
 
 
 
-def compute_hcf(x, y, , ):
-   while(y):
-       x, y = y, x % y
-   return 0
-if x == 6
-if c <= 7
-hcf = compute_hcf(300, 400)
+
+while(y):
+    x, y = y, x % y
+
+var1 = 300
+var2 = 200
+var3 = "xxx"
+var4 = 1
+hcf = compute_hcf ( var1 , var2 , var3 , var4 )
+
 

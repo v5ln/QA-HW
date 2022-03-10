@@ -1,20 +1,21 @@
 
 
 
-def output (line, testType, index):
-    index += 1
+def output (line, testType):
     print("["+testType+"] test faild")
     if testType == "magic number":
         pass
     if testType == "magic string":
         pass
     if testType == "attribute":
-        pass
+        print("data types doesnt match in line")
+        print(line)
+        print('----------------------------')
     if testType == "unreachable":
         pass
     if testType == "parameters":
-        print("there is more than 3 parameters in line number: "+ str(index))
+        print("there is more than 3 parameters in line")
         print(line)
-
+        print('----------------------------')
         pass
 

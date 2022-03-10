@@ -17,5 +17,5 @@ def parametersTest(lines):
                 if letter == letterString:
                     commaCount+=1
             if commaCount >= maxParameterNumber:
-                TestOutput.output(line,testType,lines.index(line))
+                TestOutput.output(line,testType)
 

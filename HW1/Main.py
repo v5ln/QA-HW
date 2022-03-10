@@ -1,5 +1,9 @@
 import ReadFile
+import ParametersTest
 
-filename = "test.txt"
+## Read File 
 
-lines = ReadFile.readFile(filename)
+lines = ReadFile.readFile()
+
+## Parameters Test
+ParametersTest.parametersTest(lines)

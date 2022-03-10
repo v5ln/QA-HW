@@ -1,4 +1,5 @@
-def readFile(name):
-    file = open (name, 'r')
+
+def readFile():
+    file = open ("test.txt", 'r')
     lines = file.readlines()
     return lines

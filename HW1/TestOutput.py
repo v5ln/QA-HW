@@ -1,8 +1,5 @@
 
 
-from os import PRIO_USER
-from readline import insert_text
-
 
 def output (line, testType, index):
     index +=1
@@ -16,6 +13,8 @@ def output (line, testType, index):
     if testType == "unreachable":
         pass
     if testType == "parameters":
-        print("there is more than 3 parameters in line number: "+ index + "\nline")
+        print("there is more than 3 parameters in line number: "+ index)
+        print(line)
+
         pass
 

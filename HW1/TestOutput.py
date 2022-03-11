@@ -16,7 +16,9 @@ def output (line, testType):
         print(line)
         print('----------------------------')
     if testType == "unreachable":
-        pass
+        print("after this line there is an unreachable code")
+        print(line)
+        print('----------------------------')
     if testType == "parameters":
         print("there is more than 3 parameters in line")
         print(line)

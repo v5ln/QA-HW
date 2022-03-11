@@ -3,6 +3,7 @@ import ReadFile
 import ParametersTest
 import AttributeTest
 import MagicTest
+import UnreachableTest
 
 ## Read File 
 lines = ReadFile.readFile()
@@ -18,3 +19,6 @@ MagicTest.magicNumberTest(lines)
 
 ## Magic String Test
 MagicTest.magicStringTest(lines)
+
+## Unreachable Test
+UnreachableTest.unreachableTest(lines)

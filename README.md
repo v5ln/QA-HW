@@ -3,7 +3,7 @@
 
 ## Group Assignment 1: Static analyzer
 ### Demo Video Link
-[![DEMO VIDEO](https://img.youtube.com/vi/yqVGjvtThSs/0.jpg)](https://www.youtube.com/watch?v=yqVGjvtThSs)
+[![DEMO VIDEO](https://img.youtube.com/vi/I2BD2XqfJi4/0.jpg)](https://www.youtube.com/watch?v=I2BD2XqfJi4)
 
 ### Main File
 in this file we called our methods to run the test by giving them the lines of the python text file

@@ -5,6 +5,7 @@ const pass = 'Mohammad'
 const keyword1 = 'software'
 const keyword2 = 'java'
 const keyword3 = 'Software'
+const keyword4 = 'البرمجيات'
 
 const runout = [keyword1, keyword2]
 const regex_all_kewords = new RegExp(`${runout.join('|')}`, 'g')
@@ -113,5 +114,33 @@ describe('skillsmatch_search_test',()=>{
             expect(results_stars).to.deep.eq(sorted_result)
         })
     })
+    it('translate',()=>{
 
+        const text = keyword1;
+
+        // Google translate: 
+        // const translate = new Translate();
+        // const target = 'ru';
+        // async function translateText(word) {
+        //     let [translations] = await translate.translate(text, target);
+        //     translations = Array.isArray(translations) ? translations : [translations];
+        //     return translations[0]
+        // }
+
+        // demo translate:
+        function translate(word){
+            if (word == keyword4){
+                return keyword1
+            }
+        }
+
+        cy.get(`.tagify__input`).type(`${keyword4}`).type('{enter}')
+        cy.get('a[test-data=AdvancedOptions]').click()
+        cy.get('select[test-data=translateInput]').select('en')
+        cy.get('.btn[test-data=searchButton]').click()
+        cy.get('[test-data=searchItem_1]')
+            .children('[test-data=MatchedKeywords]').contains(translate(keyword4))
+        
+        // translateText();
+    })
 })

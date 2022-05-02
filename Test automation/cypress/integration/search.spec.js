@@ -17,6 +17,24 @@ describe('skillsmatch_search_test',()=>{
         cy.visit('https://skillsmatch.mdx.ac.uk/accounts/login/?next=/en/search/')
         cy.login(username,pass)
     });
+    it('search_result_matching',()=>{
+    var match_number = 0
+        cy.get(`.tagify__input`).type(`${keyword1}`).type('{enter}')
+        cy.get('.btn[test-data=searchButton]').click()
+        cy.get('div[test-data=searchItem_1]').within(()=>{
+            cy.get('[test-data=TotalMatches]').invoke('text').then((value)=>{
+                var matches = value.match(/(\d+)/);
+                match_number = matches[0]
+            })
+            cy.get('a[target=_blank]').invoke('attr','href').then((value)=>{
+                cy.visit('https://skillsmatch.mdx.ac.uk'+value)
+            })
+        })
+        cy.get('legend').parent().nextUntil('[class=modal fade]').within(()=>{
+            cy.get(':contains("software")').should('have.length',match_number)
+        })
+    })
+
     it('keyword_matching',()=>{
         cy.get(`.tagify__input`).type(`${keyword1}`).type('{enter}')
         cy.get(`.tagify__input`).type(`${keyword2}`).type('{enter}')

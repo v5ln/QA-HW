@@ -84,5 +84,34 @@ describe('skillsmatch_search_test',()=>{
             cy.get('a[target=_blank]').contains(keyword3)
         })
     })
+    
+    it('sort_based_on_reviews',()=>{
+        var results_stars = []
+        var stars = 0
+        cy.get(`.tagify__input`).type(`${keyword1}`).type('{enter}')
+        cy.get('a[test-data=AdvancedOptions]').click()
+        cy.get('input[test-data=sort_by_user_reviews]').click()
+        cy.get('.btn[test-data=searchButton]').click()
+        cy.get('[id=search-result]').children('div[class=search-item]').its('length').then(len=>{
+            for (var i=0; i<len; i++){
+                cy.get('[test-data=searchItem_'+(i+1)+']')
+                    .children('[test-data=UserFeedback]')
+                    .children().each(child=>{
+                        if(child[0].className == 'fill'){
+                            stars ++
+                        }
+                    })
+                    cy.then(()=>{
+                        results_stars.push(stars)
+                        stars = 0
+                    })
+            }
+        })
+        cy.then(()=>{
+            var sorted_result = Array.from(results_stars)
+            sorted_result.sort().reverse()
+            expect(results_stars).to.deep.eq(sorted_result)
+        })
+    })
 
 })

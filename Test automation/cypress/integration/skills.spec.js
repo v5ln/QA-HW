@@ -266,6 +266,20 @@ describe('skillsmatch_skills_test',()=>{
             
             cy.get('input[name=submit]').click()
         })
+        it('CompairScores',()=>{
+            cy.get('span[test-data=area_1_Scor]').should('contain.text',area_1)
+    
+            cy.get('span[test-data=area_2_Scor]').should('contain.text',area_2)
+    
+            cy.get('span[test-data=area_3_Scor]').should('contain.text',area_3)
+    
+            cy.get('span[test-data=area_4_Scor]').should('contain.text',area_4)
+    
+            cy.get('span[test-data=area_5_Scor]').should('contain.text',area_5)
+    
+            cy.get('span[test-data=area_6_Scor]').should('contain.text',area_6)
+            
+        })
         
     })
 })

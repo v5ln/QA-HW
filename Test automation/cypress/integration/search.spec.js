@@ -6,7 +6,7 @@ const keyword1 = 'software'
 const keyword2 = 'java'
 const keyword3 = 'Software'
 const keyword4 = 'البرمجيات'
-
+const {Translate} = require('@google-cloud/translate').v2;
 const runout = [keyword1, keyword2]
 const regex_all_kewords = new RegExp(`${runout.join('|')}`, 'g')
 
@@ -115,31 +115,36 @@ describe('skillsmatch_search_test',()=>{
         })
     })
     it('translate',()=>{
-
+        
         const text = keyword1;
-
+        var translated = 'x'
         // Google translate: 
-        // const translate = new Translate();
-        // const target = 'ru';
-        // async function translateText(word) {
-        //     let [translations] = await translate.translate(text, target);
-        //     translations = Array.isArray(translations) ? translations : [translations];
-        //     return translations[0]
-        // }
+        const translate = new Translate();
+        const target = 'ar';
+        async function translateText(word) {
+            let [translations] = await translate.translate(text, target);
+            translations = Array.isArray(translations) ? translations : [translations];
+            translated = translations[0]
+        }
 
         // demo translate:
-        function translate(word){
-            if (word == keyword4){
-                return keyword1
-            }
-        }
+        // function translate(word){
+        //     if (word == keyword4){
+        //         return keyword1
+        //     }
+        // }
+        cy.then(()=>{
+            translateText(keyword4);
+        })
+        cy.once('uncaught:exception', () => false);
+        cy.wait(1000)
 
         cy.get(`.tagify__input`).type(`${keyword4}`).type('{enter}')
         cy.get('a[test-data=AdvancedOptions]').click()
         cy.get('select[test-data=translateInput]').select('en')
         cy.get('.btn[test-data=searchButton]').click()
         cy.get('[test-data=searchItem_1]')
-            .children('[test-data=MatchedKeywords]').contains(translate(keyword4))
+            .children('[test-data=MatchedKeywords]').contains(translated)
         
         // translateText();
     })

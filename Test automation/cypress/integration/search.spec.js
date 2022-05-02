@@ -64,4 +64,15 @@ describe('skillsmatch_search_test',()=>{
             }
         })
     })
+
+    it('tag_case_sensitive',()=>{
+        cy.get(`.tagify__input`).type(`${keyword3}`).type('{enter}')
+        cy.get('a[test-data=AdvancedOptions]').click()
+        cy.get('input[test-data=case_sensitive]').click()
+        cy.get('.btn[test-data=searchButton]').click()
+        cy.get('[test-data=searchItem_1]')
+            .children('[test-data=MatchedKeywords]')
+            .contains(keyword3)
+    })
+
 })

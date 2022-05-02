@@ -75,4 +75,14 @@ describe('skillsmatch_search_test',()=>{
             .contains(keyword3)
     })
 
+    it('search_in_title',()=>{
+        cy.get(`.tagify__input`).type(`${keyword3}`).type('{enter}')
+        cy.get('a[test-data=AdvancedOptions]').click()
+        cy.get('input[test-data=search_in_title]').click()
+        cy.get('.btn[test-data=searchButton]').click()
+        cy.get('[test-data=searchItem_1]').within(()=>{
+            cy.get('a[target=_blank]').contains(keyword3)
+        })
+    })
+
 })

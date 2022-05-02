@@ -280,7 +280,44 @@ describe('skillsmatch_skills_test',()=>{
             cy.get('span[test-data=area_6_Scor]').should('contain.text',area_6)
             
         })
-        
+        it('CheckStars',()=>{
+            cy.get('[test-data=area_1_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_1/16)*5,0.5)
+            })
+    
+            cy.get('[test-data=area_2_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_2/12)*5,0.5)
+            })
+    
+            cy.get('[test-data=area_3_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_3/16)*5,0.5)
+            })
+    
+            cy.get('[test-data=area_4_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_4/12)*5,0.5)
+            })
+    
+            cy.get('[test-data=area_5_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_5/12)*5,0.5)
+            })
+    
+            cy.get('[test-data=area_6_myscore]')
+            .children('[test-data=filledStar]')
+            .should($children =>{
+                expect($children.length).to.be.closeTo((area_6/20)*5,0.5)
+            })
+    
+        })
     })
 })
 

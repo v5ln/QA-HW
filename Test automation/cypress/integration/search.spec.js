@@ -35,6 +35,24 @@ describe('skillsmatch_search_test',()=>{
         })
     })
 
+    it('all_keyword_matching',()=>{
+        cy.get(`.tagify__input`).type(`${keyword1}`).type('{enter}')
+        cy.get(`.tagify__input`).type(`${keyword2}`).type('{enter}')
+        cy.get('a[test-data=AdvancedOptions]').click()
+        cy.get('input[test-data=match_all]').click()
+        cy.get('.btn[test-data=searchButton]').click()
+
+        cy.get('[id=search-result]').children('div[class=search-item]').its('length').then(len=>{
+            for (var i=0; i<len; i++){
+                cy.get('[test-data=searchItem_'+(i+1)+']')
+                .children('[test-data=MatchedKeywords]').contains(keyword1)
+                cy.get('[test-data=searchItem_'+(i+1)+']')
+                .children('[test-data=MatchedKeywords]').contains(keyword2)
+            }
+        })
+
+    })
+
     it('keyword_matching',()=>{
         cy.get(`.tagify__input`).type(`${keyword1}`).type('{enter}')
         cy.get(`.tagify__input`).type(`${keyword2}`).type('{enter}')
